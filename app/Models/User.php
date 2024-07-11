@@ -24,11 +24,6 @@ class User extends Authenticatable
         'password',
     ];
 
-    public function plants(): BelongsToMany
-    {
-        return $this->belongsToMany(Plant::class);
-    }
-
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -51,4 +46,10 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function plants(): BelongsToMany
+    {
+        return $this->belongsToMany(Plant::class)->using(PlantUser::class)->withPivot("id", "city")->withTimestamps();
+    }
+
 }

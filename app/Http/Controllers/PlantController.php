@@ -20,26 +20,26 @@ class PlantController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Create a new resource in storage.
      */
     public function create(PlantRequest $request): JsonResponse
     {
         $plant = new Plant();
         $plant = Plant::create($request->validated());
 
-        return response()->json([
-            'plant' => $plant
-        ]);
+        return response()->json(
+            $plant
+        );
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Edit the specified resource.
      */
-    public function edit(Plant $plant): JsonResponse
+    public function read(Plant $plant): JsonResponse
     {
-        return response()->json([
-            'plant' => $plant
-        ]);
+        return response()->json(
+            $plant
+        );
     }
 
     /**
@@ -53,8 +53,12 @@ class PlantController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Plant $plant)
+    public function delete(Plant $plant): JsonResponse
     {
-        //
+        $plant->delete();
+
+        return response()->json([
+            'message' => 'La plante a bien été supprimée',
+        ]);
     }
 }
