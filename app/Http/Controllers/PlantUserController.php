@@ -59,4 +59,22 @@ class PlantUserController extends Controller
 
     }
 
+    /**
+     * Remove the specified resource from the connected user.
+     */
+    public function deletePlantUser(Request $request, Plant $plant): JsonResponse
+    {
+        /**
+         * @var User $user
+         */
+        $user = $request->user();
+
+        $user->plants()->detach($plant);
+
+        return response()->json([
+            'message' => 'La plante a bien été détachée',
+        ]);
+
+    }
+
 }
