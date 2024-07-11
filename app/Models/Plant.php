@@ -16,7 +16,17 @@ class Plant extends Model
 
     protected $fillable = [
         'common_name',
-        'watering_general_benchmark'
+        'watering_general_benchmark',
+        "scientific_name",
+        "type",
+        "watering",
+        "sunlight",
+        "growth_rate",
+        "edible_fruit",
+        "poisonous_to_humans",
+        "poisonous_to_pets",
+        "description",
+        "image_url"
     ];
 
     /**
