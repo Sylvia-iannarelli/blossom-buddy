@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PlantRequest;
+use App\Jobs\UpdatePlantsJob;
 use App\Models\Plant;
 use App\Services\PerenualApiService;
 use Illuminate\Http\JsonResponse;
@@ -10,11 +11,11 @@ use Illuminate\Http\Request;
 
 class PlantController extends Controller
 {
-    protected $perenualApiService;
+    protected $apiService;
 
-    public function __construct(PerenualApiService $perenualApiService)
+    public function __construct(PerenualApiService $apiService)
     {
-        $this->perenualApiService = $perenualApiService;
+        $this->apiService = $apiService;
     }
 
     /**
@@ -22,11 +23,9 @@ class PlantController extends Controller
      */
     public function update()
     {
-        // Mettre à jour 100 plantes par jour
-        for ($i = 1; $i <= 100; $i++) {
-            $this->perenualApiService->integratePlantData($i);
-            sleep(1); // Ajouter une pause pour éviter les problèmes de dépassement de taux de requêtes
-        }
+        // Dispatcher le job de mise à jour des plantes
+        UpdatePlantsJob::dispatch($this->apiService);
+        return response()->json(['status' => 'Update job dispatched']);
     }
 
     /**
