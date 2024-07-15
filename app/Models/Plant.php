@@ -11,7 +11,9 @@ class Plant extends Model
     use HasFactory;
 
     protected $casts = [
-        'watering_general_benchmark' => 'array'
+        'watering_general_benchmark' => 'array',
+        'scientific_name' => 'array',
+        'sunlight' => 'array'
     ];
 
     protected $fillable = [

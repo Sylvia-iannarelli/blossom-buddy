@@ -22,6 +22,7 @@ Route::prefix('/plant')->name('plant.')->group(function () {
     Route::post('/', [PlantController::class, 'create'])->name('create');
     Route::get('/{plant}', [PlantController::class, 'read'])->name('read');
     Route::delete('/{plant}', [PlantController::class, 'delete'])->name('delete');
+    Route::get('/update', [PlantController::class, 'update'])->name('update');
 });
 
 // PlantUser routes (routes where the user interact with plants)

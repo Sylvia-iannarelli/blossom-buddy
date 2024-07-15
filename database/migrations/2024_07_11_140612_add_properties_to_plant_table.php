@@ -12,16 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('plants', function (Blueprint $table) {
-            $table->string("scientific_name");
-            $table->string("type");
-            $table->string("watering");
-            $table->string("sunlight");
-            $table->string("growth_rate");
-            $table->boolean("edible_fruit");
-            $table->integer("poisonous_to_humans");
-            $table->integer("poisonous_to_pets");
-            $table->longText("description");
-            $table->string("image_url");
+            $table->longText("scientific_name")->nullable();
+            $table->string("type")->nullable();
+            $table->string("watering")->nullable();
+            $table->longText("sunlight")->nullable();
+            $table->string("growth_rate")->nullable();
+            $table->boolean("edible_fruit")->nullable();
+            $table->integer("poisonous_to_humans")->nullable();
+            $table->integer("poisonous_to_pets")->nullable();
+            $table->text("description")->nullable();
+            $table->text("image_url")->nullable();
         });
     }
 
