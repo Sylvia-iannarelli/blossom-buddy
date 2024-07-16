@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PlantController;
 use App\Http\Controllers\PlantUserController;
+use App\Interfaces\AuthControllerInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -11,10 +11,10 @@ use Illuminate\Support\Facades\Route;
 // })->middleware('auth:sanctum');
 
 // Auth routes
-Route::post('/register', [AuthController::class, 'register'])->name('register');
-Route::post('/login', [AuthController::class, 'login'])->name('login');
-Route::post('/connected', [AuthController::class, 'connected'])->middleware('auth:sanctum')->name('connected');
-Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum')->name('logout');
+Route::post('/register', [AuthControllerInterface::class, 'register'])->name('register');
+Route::post('/login', [AuthControllerInterface::class, 'login'])->name('login');
+Route::post('/connected', [AuthControllerInterface::class, 'connected'])->middleware('auth:sanctum')->name('connected');
+Route::post('/logout', [AuthControllerInterface::class, 'logout'])->middleware('auth:sanctum')->name('logout');
 
 // Plant routes
 Route::prefix('/plant')->name('plant.')->group(function () {
