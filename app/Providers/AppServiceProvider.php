@@ -3,7 +3,6 @@
 namespace App\Providers;
 
 use App\Services\PerenualApiService;
-use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +12,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton(PerenualApiService::class, function (Application $app) {
+        $this->app->singleton(PerenualApiService::class, function ($app) {
             return new PerenualApiService();
         });
     }
