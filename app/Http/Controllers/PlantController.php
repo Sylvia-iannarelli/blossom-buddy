@@ -48,15 +48,17 @@ class PlantController extends Controller
         $plant = Plant::create($request->validated());
 
         return response()->json(
-            $plant
+            $plant,
+            201
         );
     }
 
     /**
      * Edit the specified resource.
      */
-    public function read(Plant $plant): JsonResponse
+    public function read(string $common_name): JsonResponse
     {
+        $plant = Plant::where('common_name', 'LIKE', '%' . $common_name . '%')->firstOrFail();
         return response()->json(
             $plant
         );
@@ -73,13 +75,15 @@ class PlantController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function delete(Plant $plant): JsonResponse
+    public function delete(string $common_name): JsonResponse
     {
+        $plant = Plant::where('common_name', 'LIKE', '%' . $common_name . '%')->firstOrFail();
         $plant->delete();
 
-        return response()->json([
-            'message' => 'La plante a bien été supprimée',
-        ]);
+        return response()->json(
+            null,
+            204
+        );
     }
 
 

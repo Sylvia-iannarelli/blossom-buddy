@@ -55,7 +55,7 @@ class PlantUserController extends Controller
 
         return response()->json([
             'message' => 'La plante a bien été rattachée',
-        ]);
+        ], 200);
 
     }
 
