@@ -29,5 +29,5 @@ Route::prefix('/plant')->name('plant.')->group(function () {
 Route::prefix('/user/plant')->name('user.plant.')->group(function () {
     Route::get('/', [PlantUserController::class, 'getPlantUser'])->middleware('auth:sanctum')->name('getPlantUser');
     Route::post('/', [PlantUserController::class, 'addPlantUser'])->middleware('auth:sanctum')->name('addPlantUser');
-    Route::delete('/{plant}', [PlantUserController::class, 'deletePlantUser'])->middleware('auth:sanctum')->name('deletePlantUser');
+    Route::delete('/{id}', [PlantUserController::class, 'deletePlantUser'])->middleware('auth:sanctum')->name('deletePlantUser');
 });

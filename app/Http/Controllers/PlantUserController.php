@@ -21,7 +21,8 @@ class PlantUserController extends Controller
         $plants = $user->plants;
 
         return response()->json(
-            $plants
+            $plants,
+            200
         );
     }
 
@@ -40,10 +41,9 @@ class PlantUserController extends Controller
          * @var User $user
          */
         $user = $request->user();
-        $user_id = $user->id;
 
         $plantCommonName = $validated['common_name'];
-        $plant = Plant::where('common_name', 'like', "%$plantCommonName%")->get()->firstOrFail();
+        $plant = Plant::where('common_name', 'LIKE', "%$plantCommonName%")->firstOrFail();
         if (!$plant) {
             return response()->json(['error' => 'Plant not found'], 404);
         }
@@ -62,18 +62,23 @@ class PlantUserController extends Controller
     /**
      * Remove the specified resource from the connected user.
      */
-    public function deletePlantUser(Request $request, Plant $plant): JsonResponse
+    public function deletePlantUser(Request $request, int $id): JsonResponse
     {
         /**
          * @var User $user
          */
         $user = $request->user();
 
-        $user->plants()->detach($plant);
+        $relation = $user->plants()->wherePivot('id', $id)->first();
+        if (!$relation) {
+            return response()->json(['message' => 'La plante n\'est pas dans la liste de l\'utilisateur'], 404);
+        }
+
+        $user->plants()->wherePivot('id', $id)->detach();
 
         return response()->json([
             'message' => 'La plante a bien été détachée',
-        ]);
+        ], 200);
 
     }
 
