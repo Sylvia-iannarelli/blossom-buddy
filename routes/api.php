@@ -21,7 +21,7 @@ Route::prefix('/plant')->name('plant.')->group(function () {
     Route::get('/', [PlantController::class, 'index'])->name('index');
     Route::post('/', [PlantController::class, 'create'])->name('create');
     Route::get('/{common_name}', [PlantController::class, 'read'])->name('read');
-    Route::delete('/{common_name}', [PlantController::class, 'delete'])->name('delete');
+    Route::delete('/{plant}', [PlantController::class, 'delete'])->name('delete');
     Route::get('/update', [PlantController::class, 'update'])->name('update');
 });
 

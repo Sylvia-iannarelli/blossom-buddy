@@ -71,14 +71,12 @@ class PlantController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function delete(string $common_name): JsonResponse
+    public function delete(Plant $plant): JsonResponse
     {
-        $plant = Plant::where('common_name', 'LIKE', '%' . $common_name . '%')->firstOrFail();
         $plant->delete();
 
-        return response()->json(
-            null,
-            204
+        return response()->json([
+            'message' => 'La plante a bien été supprimée'], 200
         );
     }
 
