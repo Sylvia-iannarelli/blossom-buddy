@@ -17,6 +17,7 @@ class Plant extends Model
     ];
 
     protected $fillable = [
+        'api_id',
         'common_name',
         'watering_general_benchmark',
         "scientific_name",

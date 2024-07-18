@@ -12,12 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('plants', function (Blueprint $table) {
+            $table->integer("api_id")->nullable();
             $table->longText("scientific_name")->nullable();
             $table->string("type")->nullable();
             $table->string("watering")->nullable();
             $table->longText("sunlight")->nullable();
             $table->string("growth_rate")->nullable();
-            $table->boolean("edible_fruit")->nullable();
+            $table->boolean("edible_fruit")->default(false);
             $table->integer("poisonous_to_humans")->nullable();
             $table->integer("poisonous_to_pets")->nullable();
             $table->text("description")->nullable();
@@ -31,6 +32,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('plants', function (Blueprint $table) {
+            $table->dropColumn("api_id");
             $table->dropColumn("scientific_name");
             $table->dropColumn("type");
             $table->dropColumn("watering");

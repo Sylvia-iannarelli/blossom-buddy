@@ -20,16 +20,6 @@ namespace App\Models{
  * @property array $watering_general_benchmark
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property array|null $scientific_name
- * @property string|null $type
- * @property string|null $watering
- * @property array|null $sunlight
- * @property string|null $growth_rate
- * @property int|null $edible_fruit
- * @property int|null $poisonous_to_humans
- * @property int|null $poisonous_to_pets
- * @property string|null $description
- * @property string|null $image_url
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\User> $users
  * @property-read int|null $users_count
  * @method static \Illuminate\Database\Eloquent\Builder|Plant newModelQuery()
@@ -37,18 +27,8 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Plant query()
  * @method static \Illuminate\Database\Eloquent\Builder|Plant whereCommonName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Plant whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Plant whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Plant whereEdibleFruit($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Plant whereGrowthRate($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Plant whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Plant whereImageUrl($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Plant wherePoisonousToHumans($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Plant wherePoisonousToPets($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Plant whereScientificName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Plant whereSunlight($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Plant whereType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Plant whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Plant whereWatering($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Plant whereWateringGeneralBenchmark($value)
  */
 	class Plant extends \Eloquent {}

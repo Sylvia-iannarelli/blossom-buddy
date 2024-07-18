@@ -35,7 +35,7 @@ class UpdatePlantData extends Command
     public function handle()
     {
         // Mettre à jour 100 plantes par jour
-        for ($i = 1; $i <= 100; $i++) {
+        for ($i = 1; $i <= 3; $i++) {
             $this->apiService->integratePlantData($i);
             sleep(1); // Ajouter une pause pour éviter les problèmes de dépassement de taux de requêtes
         }

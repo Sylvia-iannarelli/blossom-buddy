@@ -15,9 +15,7 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->bind(AuthControllerInterface::class, AuthController::class);
-        $this->app->singleton(PerenualApiService::class, function ($app) {
-            return new PerenualApiService();
-        });
+        $this->app->singleton(PerenualApiService::class);
     }
 
     /**
