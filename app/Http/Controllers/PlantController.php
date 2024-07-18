@@ -22,11 +22,7 @@ class PlantController extends Controller
      */
     public function update()
     {
-        // Mettre à jour 100 plantes par jour
-        for ($i = 1; $i <=3; $i++) {
-            $this->perenualApiService->integratePlantData($i);
-            sleep(1); // Ajouter une pause pour éviter les problèmes de dépassement de taux de requêtes
-        }
+        $this->perenualApiService->integratePlantData();
     }
 
     /**
